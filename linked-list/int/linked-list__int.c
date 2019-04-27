@@ -8,7 +8,7 @@
 
 struct Node
 {
-    char *element;
+    int element;
     struct Node *next;
 };
 
@@ -33,7 +33,7 @@ int linked_list_init(LinkedList *ll, unsigned int ll_type)
     ll->type = ll_type;
 }
 
-int linked_list_push(LinkedList *ll, char *element)
+int linked_list_push(LinkedList *ll, int element)
 {
     struct Node *node;
     node = (struct Node *)malloc(sizeof(struct Node));
@@ -92,7 +92,7 @@ struct Node *linked_list_get_node_with_next_pointing_to(LinkedList *ll, struct N
     return NULL;
 }
 
-int linked_list_pop(LinkedList *ll, char *element_pointer)
+int linked_list_pop(LinkedList *ll, int *element_pointer)
 {
     if (ll->size <= 0)
     {
@@ -140,11 +140,11 @@ void main()
 {
     LinkedList ll;
     linked_list_init(&ll, FILO);
-    linked_list_push(&ll, "Element1");
-    linked_list_push(&ll, "Element2");
-    linked_list_push(&ll, "Element3");
+    linked_list_push(&ll, 10);
+    linked_list_push(&ll, 20);
+    linked_list_push(&ll, 30);
     linked_list_print(&ll);
-    char* msg;
+    int msg;
     linked_list_pop(&ll, &msg);
     linked_list_print(&ll);
 }
